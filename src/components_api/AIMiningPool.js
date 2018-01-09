@@ -9,7 +9,7 @@ class AIMiningPool extends Component {
 
             aiMiningPoolId: NaN,
             aiMiningPool: {},
-            iaMiningPoolData: NaN
+            iaMiningPoolData: null
         }
     }
 
@@ -34,7 +34,7 @@ class AIMiningPool extends Component {
                 })
             );
 
-        this.timer = setInterval(this.componentGetData, 20000)
+        this.timer = setInterval(this.componentGetData.bind(this), 10000)
     }
 
     componentWillUnmount(){
