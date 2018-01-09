@@ -76,7 +76,31 @@ class AIMiningWallet extends Component {
         //    clearInterval(this.timer_payout);
         //    clearInterval(this.timer_hashrate);
     }
+    zeroPad(num, numZeros) {
+        var n = Math.abs(num);
+        var zeros = Math.max(0, numZeros - Math.floor(n).toString().length );
+        var zeroString = Math.pow(10,zeros).toString().substr(1);
+        if( num < 0 ) {
+            zeroString = '-' + zeroString;
+        }
 
+        return zeroString+n;
+    }
+    timeConverter(UNIX_timestamp) {
+        if (UNIX_timestamp === 0) {
+            return "";
+        }
+        let a = new Date(UNIX_timestamp * 1000),
+            months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+            year = a.getFullYear(),
+            month = months[a.getMonth()],
+            date = this.zeroPad(a.getDate(),2),
+            hour = this.zeroPad(a.getHours(),2),
+            min = this.zeroPad(a.getMinutes(),2),
+            sec = this.zeroPad(a.getSeconds(),2),
+            time = date + '.' + month + '.' + year + ', ' + hour + ':' + min + ':' + sec;
+        return time;
+    }
     render() {
         if (this.state.aiMiningWalletData && ! this.state.loading_wallet && this.state.aiMiningWalletData.wallet_lastshare > 0) {
             return (
@@ -85,13 +109,13 @@ class AIMiningWallet extends Component {
                         <td rowSpan="2" className="clsBodyRowId">{this.state.aiMiningWalletData.wallet_id}</td>
                         <td rowSpan="2" colSpan="3" className="clsBodyRowWallet">...{this.state.aiMiningWalletData.wallet.substring((this.state.aiMiningWalletData.wallet.length-16))}</td>
                         <td colSpan="2" className="clsBodyRowWalletHashRate">{this.state.aiMiningWalletData.wallet_hashrate_str}</td>
-                        <td className="clsBodyRowWalletLastShare">{this.state.aiMiningWalletData.wallet_lastshare}</td>
+                        <td className="clsBodyRowWalletLastShare">{this.timeConverter(this.state.aiMiningWalletData.wallet_lastshare)}</td>
                         <td rowSpan="2" className="clsBodyRowAWait">{this.state.aiMiningWalletData.date_await}</td>
                     </tr>
                     <tr className="clsBodyRow">
                         <td className="clsBodyRowWalletBalance">{this.state.aiMiningWalletData.wallet_balance}</td>
                         <td className="clsBodyRowWalletPaid">{this.state.aiMiningWalletData.wallet_paid}</td>
-                        <td className="clsBodyRowWalletLastPaid">{this.state.aiMiningWalletData.wallet_lastpaid}</td>
+                        <td className="clsBodyRowWalletLastPaid">{this.timeConverter(this.state.aiMiningWalletData.wallet_lastpaid)}</td>
                     </tr>
                 </Fragment>
             );

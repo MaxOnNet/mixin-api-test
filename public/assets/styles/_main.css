@@ -3,13 +3,13 @@ body {
     margin: 0px;
     color: #FFFFFF;
     background-color: #666666;
-    font-family: Arial, sans-serif;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
     font-size: 12px;
 }
 
 
 td, tr {
-    font-family: Arial, sans-serif;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
     font-size: 10px;
 
     height: 14px;

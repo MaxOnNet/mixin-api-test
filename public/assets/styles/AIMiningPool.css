@@ -10,7 +10,7 @@ td.clsBodyRowPoolName {
     padding-top: 2px;
 }
 td.clsBodyRowPoolName a {
-    color: #545454;
+    color: #181818;
     text-decoration: none;
 }
 td.clsBodyRowPoolClean {
@@ -115,8 +115,8 @@ td.clsBodyRowWalletHashrate {
 td.clsBodyRowWalletBalance {
     width: 70px;
     text-align: right;
-    background-color: #5a5a5a;
-    color: #ececec;
+    background-color: #454545;
+    color: #728cec;
     padding-left: 3px;
     padding-right: 3px;
     padding-top: 2px;
@@ -125,15 +125,15 @@ td.clsBodyRowWalletBalance {
 td.clsBodyRowWalletPaid {
     width: 70px;
     text-align: right;
-    background-color: #5a5a5a;
-    color: #ececec;
+    background-color: #454545;
+    color: #52ec4a;
     padding-left: 3px;
     padding-right: 3px;
     padding-top: 2px;
 }
 
 td.clsBodyRowWalletLastPaid {
-    width: 70px;
+    width: 140px;
     text-align: right;
     background-color: #5a5a5a;
     color: #ececec;
@@ -142,7 +142,7 @@ td.clsBodyRowWalletLastPaid {
     padding-top: 2px;
 }
 td.clsBodyRowWalletLastShare {
-    width: 70px;
+    width: 140px;
     text-align: right;
     background-color: #5a5a5a;
     color: #ececec;
