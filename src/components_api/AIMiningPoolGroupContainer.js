@@ -36,7 +36,7 @@ class AIMiningPoolGroupContainer extends Component {
             )
     }
     render() {
-        let aiMiningPoolGroups = (<p>Загрузка данных...</p>);
+        let aiMiningPoolGroups = (<p>-</p>);
 
         if (!this.state.loading) {
             if (this.state.aiMiningPoolGroups.length) {
@@ -44,16 +44,21 @@ class AIMiningPoolGroupContainer extends Component {
                     return (<AIMiningPoolGroup id={aiMiningPoolGroup.group_id} label={aiMiningPoolGroup.group_label}/>);
                 });
             } else {
-                aiMiningPoolGroups = (<p>No Data!</p>);
+                aiMiningPoolGroups = (<tr><td colSpan="11">Нет данных</td></tr>);
             }
         } else {
-            aiMiningPoolGroups = (<p>Loading Data...</p>);
+            aiMiningPoolGroups = (<tr><td colSpan="11">Загрузка данных</td></tr>);
         }
         return (
-            <p>
-                <h1>Доступные пулы:</h1>
-                {aiMiningPoolGroups}
-            </p>
+            <table cellpadding="0" cellspacing="1" border="0" className="clsTableParent" >
+                <tr>
+                    <td className="clsTableParentBody">
+                        <table cellpadding="0" cellspacing="1" className="clsTable">
+                            {aiMiningPoolGroups}
+                        </table>
+                    </td>
+                </tr>
+            </table>
         );
     }
 }

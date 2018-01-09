@@ -1,0 +1,18 @@
+tr.clsBodyRowPoolGroup {
+    height: 24px;
+
+}
+
+td.clsBodyRowPoolGroupLabel {
+    text-align: left;
+    font-size: 14px;
+    background-color: #313131;
+    color: #f0f0f0;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 1px;
+}
+td.clsBodyRowPoolName a {
+    color: #545454;
+    text-decoration: none;
+}

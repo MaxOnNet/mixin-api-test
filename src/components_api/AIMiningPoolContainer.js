@@ -40,17 +40,29 @@ class AIMiningPoolContainer extends Component {
                     return (<AIMiningPool id={aiMiningPool.pool_id} data={aiMiningPool}/>);
                 });
             } else {
-                aiMiningPoolGroups = (<p>No Data!</p>);
+                return (
+                    <tr className="clsBodyRowPoolGroup">
+                        <td className="clsBodyRowId">-/-</td>
+                        <td colSpan="10" className="clsBodyRowPoolGroupLabel">{this.props.label} : Нет данных о группе пулов.</td>
+                    </tr>
+                );
             }
         } else {
-            aiMiningPoolGroups = (<p>Loading Data...</p>);
+            return (
+                <tr className="clsBodyRowPoolGroup">
+                    <td className="clsBodyRowId">-/-</td>
+                    <td colSpan="10" className="clsBodyRowPoolGroupLabel">{this.props.label} : Загрузка данных...</td>
+                </tr>
+            );
         }
-        return (
-            <p>
-                <h1>{this.props.label}:</h1>
-                {aiMiningPoolGroups}
-            </p>
-        );
+        return (<tbody><tr className="clsBodyRowPoolGroup">
+            <td className="clsBodyRowId">-/-</td>
+            <td colSpan="10" className="clsBodyRowPoolGroupLabel">{this.props.label}</td>
+        </tr>{aiMiningPoolGroups}</tbody>);
+        //aiMiningPoolGroups+=aiMiningPoolGroupsHeader;
+
+
+
     }
 }
 

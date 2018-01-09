@@ -4,7 +4,8 @@ import AIMiningPoolContainer from './AIMiningPoolGroupContainer';
 
 class AIMiningPoolGroup extends Component {
     render() {
-        return (<AIMiningPoolContainer id={this.props.id} label={this.props.label} />);
+        return (
+            <AIMiningPoolContainer id={this.props.id} label={this.props.label} />);
     }
 }
 
