@@ -5,7 +5,9 @@ import { AIMiningPoolGroupContainer } from './ComponentsAPI';
 class App extends Component {
   render() {
     return (
+        <center>
           <AIMiningPoolGroupContainer/>
+        </center>
     );
   }
 }
