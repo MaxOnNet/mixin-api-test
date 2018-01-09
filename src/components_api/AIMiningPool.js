@@ -22,6 +22,7 @@ class AIMiningPool extends Component {
         this.state.aiMiningPool = this.props.data;
 
         this.componentGetData();
+        this.timer = setInterval(this.componentGetData.bind(this), 10000)
     }
 
     componentGetData() {
@@ -33,8 +34,6 @@ class AIMiningPool extends Component {
                     loading: false
                 })
             );
-
-        this.timer = setInterval(this.componentGetData.bind(this), 30000)
     }
 
     componentWillUnmount(){
