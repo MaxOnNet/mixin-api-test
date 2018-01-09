@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
-import { AIMiningPoolGroupContainer } from './ComponentsAPI';
+import { AIMiningPoolGroupContainer, AIMiningWalletContainer} from './ComponentsAPI';
 
 class App extends Component {
   render() {
     return (
         <center>
-          <AIMiningPoolGroupContainer/>
+            <AIMiningPoolGroupContainer/>
+            <AIMiningWalletContainer />
         </center>
     );
   }

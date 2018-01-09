@@ -66,7 +66,7 @@ class AIMiningPool extends Component {
                         <td className="clsBodyRowId">{this.state.aiMiningPool.pool_id}</td>
                         <td className="clsBodyRowPoolName"><a href={this.state.aiMiningPool.pool_web_url} target="_new">{this.state.aiMiningPool.pool_label}</a></td>
                         <td className="clsBodyRowPoolCurrency">{this.state.aiMiningPool.pool_currency}</td>
-                        <td colSpan="8" className="clsBodyRowWaitMessadge">Загрузка данных с пуле</td>
+                        <td colSpan="8" className="clsBodyRowWaitMessadge">Загрузка данных с пула...</td>
                     </tr>
                 );
             } else {
@@ -75,7 +75,7 @@ class AIMiningPool extends Component {
                         <td className="clsBodyRowId">{this.state.aiMiningPool.pool_id}</td>
                         <td className="clsBodyRowPoolName"><a href={this.state.aiMiningPool.pool_web_url} target="_new">{this.state.aiMiningPool.pool_label}</a></td>
                         <td className="clsBodyRowPoolCurrency">{this.state.aiMiningPool.pool_currency}</td>
-                        <td colSpan="8" className="clsBodyRowErrorMessadge">Нет данных о пуле</td>
+                        <td colSpan="8" className="clsBodyRowErrorMessadge">Нет данных о пуле.</td>
                     </tr>
                 );
             }

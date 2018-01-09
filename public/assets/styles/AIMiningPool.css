@@ -13,7 +13,10 @@ td.clsBodyRowPoolName a {
     color: #545454;
     text-decoration: none;
 }
-
+td.clsBodyRowPoolClean {
+    background-color: #595959;
+    color: #dddddd;
+}
 td.clsBodyRowPoolCurrency {
     width: 40px;
     text-align: center;
@@ -87,10 +90,82 @@ td.clsBodyRowPoolCurrblockEffort {
     padding-top: 2px;
 }
 td.clsBodyRowAWait {
-    width: 30px;
+    width: 40px;
     text-align: center;
     background-color: #303030;
     color: #dedede;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+
+
+
+td.clsBodyRowWalletHashrate {
+    width: 70px;
+    text-align: right;
+    background-color: #5a5a5a;
+    color: #ececec;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+td.clsBodyRowWalletBalance {
+    width: 70px;
+    text-align: right;
+    background-color: #5a5a5a;
+    color: #ececec;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+td.clsBodyRowWalletPaid {
+    width: 70px;
+    text-align: right;
+    background-color: #5a5a5a;
+    color: #ececec;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+td.clsBodyRowWalletLastPaid {
+    width: 70px;
+    text-align: right;
+    background-color: #5a5a5a;
+    color: #ececec;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+td.clsBodyRowWalletLastShare {
+    width: 70px;
+    text-align: right;
+    background-color: #5a5a5a;
+    color: #ececec;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+td.clsBodyRowWalletHashRate {
+    width: 140px;
+    text-align: right;
+    background-color: #5a5a5a;
+    color: #ececec;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+td.clsBodyRowWallet {
+    width: 120px;
+    text-align: right;
+    background-color: #3c3c3c;
+    color: #ececec;
     padding-left: 3px;
     padding-right: 3px;
     padding-top: 2px;

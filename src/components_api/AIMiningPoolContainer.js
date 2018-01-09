@@ -1,7 +1,7 @@
 /*
     Класс описывающий контейнер с группами пулов
  */
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
 
 import AIMiningPool from './AIMiningPool';
 
@@ -56,13 +56,13 @@ class AIMiningPoolContainer extends Component {
             );
         }
         return (
-            <tbody>
+            <Fragment>
                 <tr className="clsBodyRowPoolGroup">
                     <td className="clsBodyRowId">-/-</td>
                     <td colSpan="10" className="clsBodyRowPoolGroupLabel">{this.props.label}</td>
                 </tr>
                 {aiMiningPoolGroups}
-            </tbody>
+            </Fragment>
         );
         //aiMiningPoolGroups+=aiMiningPoolGroupsHeader;
 
