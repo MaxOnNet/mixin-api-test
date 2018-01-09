@@ -30,7 +30,9 @@ class AIMiningWallet extends Component {
             aiMiningWalletBalance: null,
             aiMiningWalletPayout: null,
             aiMiningWalletHashrate: null,
-            aiMiningWalletData: null
+            aiMiningWalletData: null,
+
+            aiMiningAWait: 0
         }
     }
 
@@ -43,12 +45,24 @@ class AIMiningWallet extends Component {
 
             aiMiningWalletId: this.props.wallet,
             aiMiningPoolId: this.props.pool_id,
+
+            aiMiningAWait: 0
         });
 
         // Загрузка данны кошелька
         this.componentGetWalletData();
-        this.timer_wallet = setInterval(this.componentGetWalletData.bind(this), 10000)
+        this.timer_wallet = setInterval(this.componentGetWalletData.bind(this), 10000);
+        this.timer_tick = setInterval(this.componentTickAwait.bind(this), 1000);
     }
+
+    componentTickAwait() {
+        if (this.state.aiMiningWalletData && ! this.state.loading_wallet && this.state.aiMiningWalletData.wallet_lastshare > 0) {
+            this.setState({
+                aiMiningAWait: this.state.aiMiningAWait + 1,
+            })
+        };
+    }
+
 
     componentGetWalletData() {
         fetch('https://api.mixin.lindon-pool.win/api/pool/get_mining_wallet/' + this.state.aiMiningWalletId + '/by-pool/' + this.state.aiMiningPoolId)
@@ -59,9 +73,14 @@ class AIMiningWallet extends Component {
         if (json.succes) {
             this.setState({
                 aiMiningWalletData: json.data[0],
-                loading_wallet: false
-            })
+                loading_wallet: false,
+
+                aiMiningAWait: json.data[0].date_await,
+            });
+
+
         } else {
+            clearInterval(this.timer_tick);
             clearInterval(this.timer_wallet);
         //    clearInterval(this.timer_balance);
         //    clearInterval(this.timer_payout);
@@ -71,6 +90,7 @@ class AIMiningWallet extends Component {
 
     }
     componentWillUnmount() {
+        clearInterval(this.timer_tick);
         clearInterval(this.timer_wallet);
         //    clearInterval(this.timer_balance);
         //    clearInterval(this.timer_payout);
@@ -110,7 +130,7 @@ class AIMiningWallet extends Component {
                         <td rowSpan="2" colSpan="3" className="clsBodyRowWallet">...{this.state.aiMiningWalletData.wallet.substring((this.state.aiMiningWalletData.wallet.length-16))}</td>
                         <td colSpan="2" className="clsBodyRowWalletHashRate">{this.state.aiMiningWalletData.wallet_hashrate_str}</td>
                         <td className="clsBodyRowWalletLastShare">{this.timeConverter(this.state.aiMiningWalletData.wallet_lastshare)}</td>
-                        <td rowSpan="2" className="clsBodyRowAWait">{this.state.aiMiningWalletData.date_await}</td>
+                        <td rowSpan="2" className="clsBodyRowAWait">{this.state.aiMiningAWait}</td>
                     </tr>
                     <tr className="clsBodyRow">
                         <td className="clsBodyRowWalletBalance">{this.state.aiMiningWalletData.wallet_balance}</td>

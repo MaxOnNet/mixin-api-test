@@ -9,7 +9,9 @@ class AIMiningPool extends Component {
 
             aiMiningPoolId: NaN,
             aiMiningPool: {},
-            aiMiningPoolData: null
+            aiMiningPoolData: null,
+
+            aiMiningAWait: 0
         }
     }
 
@@ -22,7 +24,16 @@ class AIMiningPool extends Component {
         this.state.aiMiningPool = this.props.data;
 
         this.componentGetData();
-        this.timer = setInterval(this.componentGetData.bind(this), 10000)
+        this.timer = setInterval(this.componentGetData.bind(this), 10000);
+        this.timer_tick = setInterval(this.componentTickAwait.bind(this), 1000);
+    }
+
+    componentTickAwait() {
+        if (this.state.aiMiningPoolData && ! this.state.loading) {
+            this.setState({
+                aiMiningAWait: this.state.aiMiningAWait + 1,
+            })
+        };
     }
 
     componentGetData() {
@@ -31,12 +42,15 @@ class AIMiningPool extends Component {
             .then(json =>
                 this.setState({
                     aiMiningPoolData: json.data[0],
-                    loading: false
+                    loading: false,
+
+                    aiMiningAWait: json.data[0].date_await,
                 })
             );
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
+        clearInterval(this.timer_tick);
         clearInterval(this.timer);
     }
 
@@ -47,7 +61,7 @@ class AIMiningPool extends Component {
                     <td className="clsBodyRowId">{this.state.aiMiningPool.pool_id}</td>
                     <td className="clsBodyRowPoolName"><a href={this.state.aiMiningPool.pool_web_url} target="_new">{this.state.aiMiningPool.pool_label}</a></td>
                     <td className="clsBodyRowPoolCurrency">{this.state.aiMiningPool.pool_currency}</td>
-                    <td className="clsBodyRowPoolFee">{this.state.aiMiningPoolData.pool_fee}%</td>
+                    <td className="clsBodyRowPoolFee">{this.state.aiMiningPoolData.pool_fee} %</td>
                     <td className="clsBodyRowNetworkReward">{this.state.aiMiningPoolData.network_reward_str}</td>
 
                     <td className="clsBodyRowNetworkDifficulty">{this.state.aiMiningPoolData.network_difficulty}</td>
@@ -55,8 +69,8 @@ class AIMiningPool extends Component {
 
                     <td className="clsBodyRowPoolHashrate">{this.state.aiMiningPoolData.pool_hashrate_str}</td>
                     <td className="clsBodyRowPoolMiners">{this.state.aiMiningPoolData.pool_miners}</td>
-                    <td className="clsBodyRowPoolCurrblockEffort">{this.state.aiMiningPoolData.pool_currblock_effort}</td>
-                    <td className="clsBodyRowAWait">{this.state.aiMiningPoolData.date_await}</td>
+                    <td className="clsBodyRowPoolCurrblockEffort">{this.state.aiMiningPoolData.pool_currblock_effort} %</td>
+                    <td className="clsBodyRowAWait">{this.state.aiMiningAWait}</td>
                 </tr>
                 );
         } else {
