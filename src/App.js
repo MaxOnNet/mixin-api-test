@@ -7,6 +7,7 @@ class App extends Component {
     return (
         <center>
             <AIMiningPoolGroupContainer/>
+            <br/>
             <AIMiningWalletContainer />
         </center>
     );

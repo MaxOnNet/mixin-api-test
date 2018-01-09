@@ -51,8 +51,8 @@ class AIMiningWallet extends Component {
 
         // Загрузка данны кошелька
         this.componentGetWalletData();
-        this.timer_wallet = setInterval(this.componentGetWalletData.bind(this), 10000);
-        this.timer_tick = setInterval(this.componentTickAwait.bind(this), 1000);
+        this.timer_wallet = setInterval(this.componentGetWalletData.bind(this), 15000);
+        this.timer_tick = setInterval(this.componentTickAwait.bind(this), 3000);
     }
 
     componentTickAwait() {

@@ -24,8 +24,8 @@ class AIMiningPool extends Component {
         this.state.aiMiningPool = this.props.data;
 
         this.componentGetData();
-        this.timer = setInterval(this.componentGetData.bind(this), 10000);
-        this.timer_tick = setInterval(this.componentTickAwait.bind(this), 1000);
+        this.timer = setInterval(this.componentGetData.bind(this), 15000);
+        this.timer_tick = setInterval(this.componentTickAwait.bind(this), 3000);
     }
 
     componentTickAwait() {
