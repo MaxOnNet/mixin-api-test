@@ -34,7 +34,7 @@ class AIMiningPool extends Component {
                 })
             );
 
-        //this.timer = setInterval(this.componentGetData.bind(this), 10000)
+        this.timer = setInterval(this.componentGetData.bind(this), 30000)
     }
 
     componentWillUnmount(){

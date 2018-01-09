@@ -55,10 +55,15 @@ class AIMiningPoolContainer extends Component {
                 </tr>
             );
         }
-        return (<tbody><tr className="clsBodyRowPoolGroup">
-            <td className="clsBodyRowId">-/-</td>
-            <td colSpan="10" className="clsBodyRowPoolGroupLabel">{this.props.label}</td>
-        </tr>{aiMiningPoolGroups}</tbody>);
+        return (
+            <tbody>
+                <tr className="clsBodyRowPoolGroup">
+                    <td className="clsBodyRowId">-/-</td>
+                    <td colSpan="10" className="clsBodyRowPoolGroupLabel">{this.props.label}</td>
+                </tr>
+                {aiMiningPoolGroups}
+            </tbody>
+        );
         //aiMiningPoolGroups+=aiMiningPoolGroupsHeader;
 
 

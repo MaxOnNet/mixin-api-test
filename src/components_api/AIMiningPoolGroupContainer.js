@@ -47,7 +47,7 @@ class AIMiningPoolGroupContainer extends Component {
                 aiMiningPoolGroups = (<tr><td colSpan="11">Нет данных</td></tr>);
             }
         } else {
-            aiMiningPoolGroups = (<tr><td colSpan="11">Загрузка данных</td></tr>);
+            aiMiningPoolGroups = (<tr><td colSpan="11" className="clsBodyRowPoolGroupWait">Загрузка данных</td></tr>);
         }
         return (
             <table cellpadding="0" cellspacing="1" border="0" className="clsTableParent" >
