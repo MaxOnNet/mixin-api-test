@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from "react";
 import PropTypes from "prop-types";
+import Formatting from "../utils/Formatting";
 
 class AIMiningWallet extends Component {
     static propTypes = {
@@ -127,14 +128,14 @@ class AIMiningWallet extends Component {
                 <Fragment>
                     <tr className="clsBodyRow">
                         <td rowSpan="2" className="clsBodyRowId">{this.state.aiMiningWalletData.wallet_id}</td>
-                        <td rowSpan="2" colSpan="3" className="clsBodyRowWallet">...{this.state.aiMiningWalletData.wallet.substring((this.state.aiMiningWalletData.wallet.length-16))}</td>
+                        <td rowSpan="2" colSpan="3" className="clsBodyRowWallet">{Formatting.wallet_format(this.state.aiMiningWalletData.wallet)}</td>
                         <td colSpan="2" className="clsBodyRowWalletHashRate">{this.state.aiMiningWalletData.wallet_hashrate_str}</td>
                         <td className="clsBodyRowWalletLastShare">{this.timeConverter(this.state.aiMiningWalletData.wallet_lastshare)}</td>
                         <td rowSpan="2" className="clsBodyRowAWait">{this.state.aiMiningAWait}</td>
                     </tr>
                     <tr className="clsBodyRow">
-                        <td className="clsBodyRowWalletBalance">{this.state.aiMiningWalletData.wallet_balance}</td>
-                        <td className="clsBodyRowWalletPaid">{this.state.aiMiningWalletData.wallet_paid}</td>
+                        <td className="clsBodyRowWalletBalance">{Formatting.number_format(this.state.aiMiningWalletData.wallet_balance, 4, ',', ' ')}</td>
+                        <td className="clsBodyRowWalletPaid">{Formatting.number_format(this.state.aiMiningWalletData.wallet_paid, 4, ',', ' ')}</td>
                         <td className="clsBodyRowWalletLastPaid">{this.timeConverter(this.state.aiMiningWalletData.wallet_lastpaid)}</td>
                     </tr>
                 </Fragment>

@@ -45,12 +45,12 @@ td.clsBodyRowNetworkReward {
     padding-top: 2px;
 }
 td.clsBodyRowNetworkDifficulty {
-    width: 80px;
-    text-align: center;
+    width: 100px;
+    text-align: right;
     background-color: #808080;
     color: #ececec;
     padding-left: 3px;
-    padding-right: 3px;
+    padding-right: 5px;
     padding-top: 2px;
 }
 td.clsBodyRowNetworkHashRate {
@@ -162,11 +162,11 @@ td.clsBodyRowWalletHashRate {
 }
 
 td.clsBodyRowWallet {
-    width: 120px;
+    width: 160px;
     text-align: right;
     background-color: #3c3c3c;
     color: #ececec;
     padding-left: 3px;
-    padding-right: 3px;
+    padding-right: 8px;
     padding-top: 2px;
 }

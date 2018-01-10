@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Formatting from "../utils/Formatting";
 
 class AIMiningPool extends Component {
     constructor() {
@@ -62,9 +63,9 @@ class AIMiningPool extends Component {
                     <td className="clsBodyRowPoolName"><a href={this.state.aiMiningPool.pool_web_url} target="_new">{this.state.aiMiningPool.pool_label}</a></td>
                     <td className="clsBodyRowPoolCurrency">{this.state.aiMiningPool.pool_currency}</td>
                     <td className="clsBodyRowPoolFee">{this.state.aiMiningPoolData.pool_fee} %</td>
-                    <td className="clsBodyRowNetworkReward">{this.state.aiMiningPoolData.network_reward_str}</td>
+                    <td className="clsBodyRowNetworkReward">{Formatting.number_format(this.state.aiMiningPoolData.network_reward, 4, ',', ' ')}</td>
 
-                    <td className="clsBodyRowNetworkDifficulty">{this.state.aiMiningPoolData.network_difficulty}</td>
+                    <td className="clsBodyRowNetworkDifficulty">{Formatting.number_format(this.state.aiMiningPoolData.network_difficulty, 0, ',', ' ')}</td>
                     <td className="clsBodyRowNetworkHashRate">{this.state.aiMiningPoolData.network_hashrate_str}</td>
 
                     <td className="clsBodyRowPoolHashrate">{this.state.aiMiningPoolData.pool_hashrate_str}</td>
