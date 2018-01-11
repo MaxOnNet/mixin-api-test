@@ -93,15 +93,15 @@ class AIMiningWalletContainer extends Component {
     render() {
         let aiMiningPoolGroups = (<p>-</p>);
 
-        if (! this.state.loading_pool_group && ! this.state.loading_pool) {
+        if (!this.state.loading_pool_group && !this.state.loading_pool) {
             if (this.state.aiMiningPoolGroups.length && this.state.aiMiningPools.length ) {
                 aiMiningPoolGroups = this.state.aiMiningPoolGroups.map(function (aiMiningPoolGroup) {
                     let aiMiningPoolArr = [];
                     let aiMiningPool;
 
-                    for (aiMiningPool in this.state.aiMiningPools){
+                    for (aiMiningPool in this.state.aiMiningPools) {
                         if (this.state.aiMiningPools[aiMiningPool].group_id === aiMiningPoolGroup.group_id) {
-                            aiMiningPoolArr.push(this.state.aiMiningPools[aiMiningPool])
+                            aiMiningPoolArr.push(this.state.aiMiningPools[aiMiningPool]);
                         }
                     }
                     return (<AIMiningWalletPoolGroup id={aiMiningPoolGroup.group_id} label={aiMiningPoolGroup.group_label} pools={aiMiningPoolArr} wallets={this.state.aiMiningWallets}/>);

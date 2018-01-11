@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from "react";
 import PropTypes from "prop-types";
-import Formatting from "../utils/Formatting";
+import Formatting from "../../utils/Formatting";
 
 class AIMiningWallet extends Component {
     static propTypes = {

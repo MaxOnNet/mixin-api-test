@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Formatting from "../utils/Formatting";
+import Formatting from "../../utils/Formatting";
 
 class AIMiningPool extends Component {
     constructor() {
