@@ -1,7 +1,7 @@
 /*
     Класс описывающий контейнер с группами пулов
  */
-import React, {Component, Fragment} from "react";
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import AIMiningWallet from './AIMiningWallet';
@@ -79,14 +79,14 @@ class AIMiningWalletContainer extends Component {
 
         fetch(apiEndPoint)
             .then(response => response.json())
-            .then(json  => this.componentParseDataPool(json.data))
+            .then(json  => this.componentParseDataPool(json.data));
     }
 
     componentParseDataPool(data) {
         this.setState({
             loading_pool: false,
             aiMiningPools: data
-        })
+        });
     }
 
 

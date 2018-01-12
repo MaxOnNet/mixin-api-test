@@ -57,7 +57,7 @@ class AIMiningWallet extends Component {
     }
 
     componentTickAwait() {
-        if (this.state.aiMiningWalletData && ! this.state.loading_wallet && this.state.aiMiningWalletData.wallet_lastshare > 0) {
+        if (this.state.aiMiningWalletData && !this.state.loading_wallet && this.state.aiMiningWalletData.wallet_lastshare > 0) {
             this.setState({
                 aiMiningAWait: this.state.aiMiningAWait + 1,
             })
@@ -87,9 +87,8 @@ class AIMiningWallet extends Component {
         //    clearInterval(this.timer_payout);
         //    clearInterval(this.timer_hashrate);
         }
-
-
     }
+
     componentWillUnmount() {
         clearInterval(this.timer_tick);
         clearInterval(this.timer_wallet);
@@ -97,6 +96,7 @@ class AIMiningWallet extends Component {
         //    clearInterval(this.timer_payout);
         //    clearInterval(this.timer_hashrate);
     }
+
     zeroPad(num, numZeros) {
         var n = Math.abs(num);
         var zeros = Math.max(0, numZeros - Math.floor(n).toString().length );
@@ -143,9 +143,9 @@ class AIMiningWallet extends Component {
         } else {
             if (this.state.loading_wallet) {
                 return (null);
-            } else {
-                return (null);
             }
+
+            return (null);
         }
     }
 }
