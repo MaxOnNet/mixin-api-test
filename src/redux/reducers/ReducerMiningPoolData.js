@@ -1,4 +1,4 @@
-import { RECEIVE_MINING_POOL_DATA, REQUEST_MINING_POOL_DATA } from '../actions/ActionsMiningPoolData';
+import { RECEIVE_MINING_POOL_DATA, REQUEST_MINING_POOL_DATA, UPDATE_MINING_POOL_DATA } from '../actions/ActionsMiningPoolData';
 
 export function miningPoolData(state = {
     isFetching: false,
@@ -11,6 +11,12 @@ export function miningPoolData(state = {
                 isFetching: true
             });
         case RECEIVE_MINING_POOL_DATA:
+            return Object.assign({}, state, {
+                isFetching: false,
+                items: action.items,
+                receiveAt: action.receivedAt
+            });
+        case UPDATE_MINING_POOL_DATA:
             return Object.assign({}, state, {
                 isFetching: false,
                 items: action.items,

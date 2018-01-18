@@ -3,6 +3,7 @@ import fetch from 'isomorphic-fetch';
 
 export const REQUEST_MINING_POOL_DATA = 'REQUEST_MINING_POOL_DATA';
 export const RECEIVE_MINING_POOL_DATA = 'RECEIVE_MINING_POOL_DATA';
+export const UPDATE_MINING_POOL_DATA = 'UPDATE_MINING_POOL_DATA';
 
 const APIUrlGetMiningPoolData = 'https://api.mixin.lindon-pool.win/api/pool/get_mining_pool_data';
 
@@ -17,6 +18,14 @@ function receiveMiningPoolData(json) {
         type: RECEIVE_MINING_POOL_DATA,
         items: json.data,
         receivedAt: Date.now()
+    };
+}
+
+function updateMiningPoolData(data, receiveDate) {
+    return {
+        type: UPDATE_MINING_POOL_DATA,
+        items: data,
+        receivedAt: receiveDate
     };
 }
 
@@ -105,25 +114,23 @@ export function fetchMiningPoolDataIfNeeded(filterArrayId = [], filterGroupArray
     };
 }
 
-function updateFetchMiningPoolData(state) {
-    let miningPoolsData = state.miningPoolData.items;
-
-    for (let i = 0; i < miningPoolsData.length; i++) {
-        let item = miningPoolsData[i];
-
-        item.date_await = Date.now() - miningPoolsData[i].date_update;
-        miningPoolsData[i] = item;
-    }
-
-    return {
-        type: RECEIVE_MINING_POOL_DATA,
-        items: miningPoolsData,
-        receivedAt: Date.now()
-    };
-}
-
-export function updateMiningPoolData() {
+export function updateMiningPoolDataAWait() {
     return (dispatch, getState) => {
-        return updateFetchMiningPoolData(getState());
+        const miningPoolsData = getState().miningPoolData.items;
+        const miningPoolsDataReceiveAt = getState().miningPoolData.receiveAt;
+        const miningPoolsDataNew = [];
+    
+        for (let i = 0; i < miningPoolsData.length; i++) {
+            const item = miningPoolsData[i];
+        
+            if (!item.hasOwnProperty('date_await_init')) {
+                item.date_await_init = item.date_await;
+            }
+        
+            item.date_await = item.date_await_init + Math.round((Date.now() - miningPoolsDataReceiveAt) / 1000);
+        
+            miningPoolsDataNew.push(item);
+        }
+        return dispatch(updateMiningPoolData(miningPoolsDataNew, miningPoolsDataReceiveAt));
     };
 }

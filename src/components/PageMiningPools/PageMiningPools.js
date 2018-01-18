@@ -23,7 +23,7 @@ class PageMiningPools extends Component {
         miningPoolDataItems: PropTypes.array.isRequired,
         miningPoolDataLastUpdated: PropTypes.number,
 
-        dispatch: PropTypes.func.isRequired,
+        dispatch: PropTypes.func.isRequired
     };
 
     static defaultProps = {
@@ -42,9 +42,9 @@ class PageMiningPools extends Component {
     }
 
     shouldComponentUpdate() {
-        const { miningPoolDataItems, miningPoolDataIsFetching } = this.props;
-
-        if (miningPoolDataItems.length && !miningPoolDataIsFetching) {
+        const { miningPoolDataIsFetching } = this.props;
+        
+        if (miningPoolDataIsFetching) {
             return false;
         }
         
@@ -52,9 +52,9 @@ class PageMiningPools extends Component {
     }
     
     findMiningPoolData(poolId) {
-        const { miningPoolDataIsFetching, miningPoolDataItems } = this.props;
+        const { miningPoolDataItems } = this.props;
 
-        if (miningPoolDataItems && !miningPoolDataIsFetching) {
+        if (miningPoolDataItems.length) {
             for (let poolIndex = 0; poolIndex < miningPoolDataItems.length; poolIndex++) {
                 if (miningPoolDataItems[poolIndex].pool_id === poolId) {
                     return miningPoolDataItems[poolIndex];
@@ -70,7 +70,7 @@ class PageMiningPools extends Component {
 
         const poolData = this.findMiningPoolData(pool.pool_id);
 
-        if (miningPoolDataItems && !miningPoolDataIsFetching && poolData) {
+        if (miningPoolDataItems && poolData) {
             return (
                 <tr className='clsBodyRow'>
                     <td className='clsBodyRowId'>{pool.pool_id}</td>
@@ -176,7 +176,7 @@ class PageMiningPools extends Component {
 
         return (<tr><td colSpan='11' className='clsBodyRowPoolGroupWait'>Загрузка данных</td></tr>);
     }
-
+    
     render() {
         const aiMiningPoolGroups = this.renderMiningPoolGroups();
 
