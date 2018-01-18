@@ -1,3 +1,4 @@
+/* eslint-disable guard-for-in */
 import fetch from 'isomorphic-fetch';
 
 export const REQUEST_MINING_POOL_DATA = 'REQUEST_MINING_POOL_DATA';
@@ -19,63 +20,92 @@ function receiveMiningPoolData(json) {
     };
 }
 
-export function fetchMiningPoolData(filterId = null, filterGroupId = null) {
+export function fetchMiningPoolData(filterArrayId = [], filterGroupArrayId = []) {
     return dispatch => {
         dispatch(requestMiningPoolData());
 
         let APIUrl = APIUrlGetMiningPoolData;
-
-        if (filterId) {
-            APIUrl = `${APIUrlGetMiningPoolData}/by-id/${filterId}`;
+    
+        if (filterArrayId.length) {
+            const filterArrayIdStr = filterArrayId.toString();
+        
+            APIUrl = `${APIUrlGetMiningPoolData}/by-pool-id/${filterArrayIdStr}`;
         }
-
-        if (filterGroupId) {
-            APIUrl = `${APIUrlGetMiningPoolData}/by-group-id/${filterGroupId}`;
+    
+        if (filterGroupArrayId.length) {
+            const filterArrayGroupIdStr = filterArrayId.toString();
+        
+            APIUrl = `${APIUrlGetMiningPoolData}/by-group-id/${filterArrayGroupIdStr}`;
         }
+        
         return fetch(APIUrl)
             .then(req => req.json())
             .then(json => dispatch(receiveMiningPoolData(json)));
     };
 }
 
-function shouldFetchMiningPoolData(state, filterId = null, filterGroupId = null) {
+function shouldFetchMiningPoolData(state, filterArrayId = [], filterGroupArrayId = []) {
     const miningPoolsData = state.miningPoolData.items;
     let miningPoolData = [];
-
-    if (miningPoolData.length) {
-        if (filterId) {
+    let filterIdFound = false;
+    let filterGroupIdFound = false;
+    let filterId;
+    let filterGroupId;
+    
+    if (filterArrayId.length) {
+        for (filterId in filterArrayId) {
+            let filterArrayIdFound = false;
+            
             for (miningPoolData in miningPoolsData) {
                 if (miningPoolData.hasOwnProperty('id')) {
                     if (miningPoolData.id === filterId) {
-                        return false;
+                        filterArrayIdFound = true;
                     }
                 }
             }
+            if (!filterArrayIdFound) {
+                filterIdFound = false;
+            }
         }
-
-        if (filterGroupId) {
+        
+        filterIdFound = true;
+    }
+    
+    if (filterGroupArrayId.length) {
+        for (filterGroupId in filterGroupArrayId) {
+            let filterGroupArrayIdFound = false;
+            
             for (miningPoolData in miningPoolsData) {
                 if (miningPoolData.hasOwnProperty('group_id')) {
                     if (miningPoolData.group_id === filterGroupId) {
-                        return false;
+                        filterGroupArrayIdFound = true;
                     }
                 }
             }
+            if (!filterGroupArrayIdFound) {
+                filterGroupIdFound = false;
+            }
         }
+        
+        filterGroupIdFound = true;
     }
-
+    
+    if (filterGroupIdFound && filterIdFound) {
+        return false;
+    }
+    
     return true;
 }
 
-export function fetchMiningPoolDataIfNeeded(filterId = null, filterGroupId = null) {
+export function fetchMiningPoolDataIfNeeded(filterArrayId = [], filterGroupArrayId = []) {
     return (dispatch, getState) => {
-        if (shouldFetchMiningPoolData(getState(), filterId, filterGroupId)) {
-            return dispatch(fetchMiningPoolData(filterId, filterGroupId));
+        if (shouldFetchMiningPoolData(getState(), filterArrayId, filterGroupArrayId)) {
+            return dispatch(fetchMiningPoolData(filterArrayId, filterGroupArrayId));
         }
     };
 }
 
-function updateFetchMiningPoolDataAWait(state) {
+function updateFetchMiningPoolData(state) {
     let miningPoolsData = state.miningPoolData.items;
 
     for (let i = 0; i < miningPoolsData.length; i++) {
@@ -94,6 +124,6 @@ function updateFetchMiningPoolDataAWait(state) {
 
 export function updateMiningPoolData() {
     return (dispatch, getState) => {
-        return updateFetchMiningPoolDataAWait(getState());
+        return updateFetchMiningPoolData(getState());
     };
 }

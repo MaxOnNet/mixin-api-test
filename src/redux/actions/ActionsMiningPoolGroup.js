@@ -1,3 +1,4 @@
+/* eslint-disable guard-for-in */
 import fetch from 'isomorphic-fetch';
 
 export const REQUEST_MINING_POOL_GROUP = 'REQUEST_MINING_POOL_GROUP';
@@ -19,14 +20,16 @@ function receiveMiningPoolGroup(json) {
     };
 }
 
-export function fetchMiningPoolGroup(filterId = null) {
+export function fetchMiningPoolGroup(filterArrayId = []) {
     return dispatch => {
         dispatch(requestMiningPoolGroup());
 
         let APIUrl = APIUrlGetMiningPoolGroup;
 
-        if (filterId) {
-            APIUrl = `${APIUrlGetMiningPoolGroup}/by-id/${filterId}`;
+        if (filterArrayId.length) {
+            const filterArrayIdStr = filterArrayId.toString();
+            
+            APIUrl = `${APIUrlGetMiningPoolGroup}/by-group-id/${filterArrayIdStr}`;
         }
 
         return fetch(APIUrl)
@@ -35,29 +38,37 @@ export function fetchMiningPoolGroup(filterId = null) {
     };
 }
 
-function shouldFetchMiningPoolGroup(state, filterId = null) {
+function shouldFetchMiningPoolGroup(state, filterArrayId = []) {
     const miningPoolGroups = state.miningPoolGroup.items;
-    let miningPoolGroup = [];
-
-    if (miningPoolGroup.length) {
-        if (filterId) {
+    let miningPoolGroup;
+    let filterId;
+    
+    if (filterArrayId.length) {
+        for (filterId in filterArrayId) {
+            let filterArrayIdFound = false;
+    
             for (miningPoolGroup in miningPoolGroups) {
                 if (miningPoolGroup.hasOwnProperty('id')) {
                     if (miningPoolGroup.id === filterId) {
-                        return false;
+                        filterArrayIdFound = true;
                     }
                 }
             }
+            if (!filterArrayIdFound) {
+                return true;
+            }
         }
+        
+        return false;
     }
 
     return true;
 }
 
-export function fetchMiningPoolGroupIfNeeded(filterId = null) {
+export function fetchMiningPoolGroupIfNeeded(filterArrayId = []) {
     return (dispatch, getState) => {
-        if (shouldFetchMiningPoolGroup(getState(), filterId)) {
-            return dispatch(fetchMiningPoolGroup(filterId));
+        if (shouldFetchMiningPoolGroup(getState(), filterArrayId)) {
+            return dispatch(fetchMiningPoolGroup(filterArrayId));
         }
     };
 }

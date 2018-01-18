@@ -4,10 +4,6 @@ import { connect } from 'react-redux';
 
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 
-import { fetchMiningPoolGroupIfNeeded } from '../../redux/actions/ActionsMiningPoolGroup';
-import { fetchMiningPoolDataIfNeeded, fetchMiningPoolData } from '../../redux/actions/ActionsMiningPoolData';
-import { fetchMiningPoolIfNeeded } from '../../redux/actions/ActionsMiningPool';
-
 import Formatting from '../../utils/Formatting';
 
 //  Загрузка стилей
@@ -28,7 +24,6 @@ class PageMiningPools extends Component {
         miningPoolDataLastUpdated: PropTypes.number,
 
         dispatch: PropTypes.func.isRequired,
-        filterId: PropTypes.number
     };
 
     static defaultProps = {
@@ -39,28 +34,11 @@ class PageMiningPools extends Component {
         miningPoolItems: [],
 
         miningPoolDataIsFetching: true,
-        miningPoolDataItems: [],
-
-        filterId: null
+        miningPoolDataItems: []
     };
 
     constructor() {
         super();
-
-        this.state = {
-            isLoaded: false
-        };
-    }
-
-    componentDidMount() {
-        const { dispatch, filterId } = this.props;
-
-        dispatch(fetchMiningPoolGroupIfNeeded());
-        dispatch(fetchMiningPoolIfNeeded(null, filterId));
-        dispatch(fetchMiningPoolDataIfNeeded(null, filterId));
-
-        this.timerRefreshData = setInterval(this.componentRefresh.bind(this), 10000);
-        this.timerRefreshAWait = setInterval(this.componentRefreshAWait.bind(this), 1000);
     }
 
     shouldComponentUpdate() {
@@ -69,26 +47,10 @@ class PageMiningPools extends Component {
         if (miningPoolDataItems.length && !miningPoolDataIsFetching) {
             return false;
         }
+        
         return true;
     }
-
-    componentWillUnmount() {
-        clearInterval(this.timerRefreshData);
-        clearInterval(this.timerRefreshAWait);
-    }
-
-    componentRefresh() {
-        const { dispatch, filterId } = this.props;
-
-        dispatch(fetchMiningPoolData(null, filterId));
-    }
-
-    componentRefreshAWait() {
-        const { dispatch, filterId } = this.props;
-
-       // dispatch(updateMiningPoolData(null, filterId));
-    }
-
+    
     findMiningPoolData(poolId) {
         const { miningPoolDataIsFetching, miningPoolDataItems } = this.props;
 
@@ -99,19 +61,14 @@ class PageMiningPools extends Component {
                 }
             }
         }
+
         return null;
     }
 
     renderMiningPool(pool) {
-        const { miningPoolDataIsFetching, miningPoolDataItems, filterId } = this.props;
+        const { miningPoolDataIsFetching, miningPoolDataItems } = this.props;
 
         const poolData = this.findMiningPoolData(pool.pool_id);
-
-        if (filterId) {
-            if (pool.group_id !== filterId) {
-                return (<Fragment/>);
-            }
-        }
 
         if (miningPoolDataItems && !miningPoolDataIsFetching && poolData) {
             return (
@@ -205,16 +162,12 @@ class PageMiningPools extends Component {
     }
 
     renderMiningPoolGroups() {
-        const { miningPoolGroupIsFetching, miningPoolGroupItems, filterId } = this.props;
+        const { miningPoolGroupIsFetching, miningPoolGroupItems } = this.props;
 
         if (!miningPoolGroupIsFetching) {
             if (miningPoolGroupItems.length) {
                 return miningPoolGroupItems.map((aiMiningPoolGroup) => {
-                    if (!filterId || (filterId && aiMiningPoolGroup.group_id !== filterId)) {
-                        return (this.renderMiningPools(aiMiningPoolGroup.group_id, aiMiningPoolGroup.group_label));
-                    }
-
-                    return (<Fragment/>);
+                    return (this.renderMiningPools(aiMiningPoolGroup.group_id, aiMiningPoolGroup.group_label));
                 });
             }
 

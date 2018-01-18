@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-// import { routerStateReducer } from 'redux-router';
+import { routerReducer } from 'react-router-redux';
 
 import { miningPoolGroup } from './ReducerMiningPoolGroup';
 import { miningPoolData } from './ReducerMiningPoolData';
 import { miningPool } from './ReducerMiningPool';
 
 export const rootReducer = combineReducers({
-//    routerStateReducer,
+    routerReducer,
     miningPoolGroup,
     miningPoolData,
     miningPool

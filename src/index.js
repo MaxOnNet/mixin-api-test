@@ -16,7 +16,7 @@ const store = configureStore();
 
 const component = (
     <Provider store={store}>
-        <Router history={history}>
+        <Router history={history} >
             <Application />
         </Router>
     </Provider>
