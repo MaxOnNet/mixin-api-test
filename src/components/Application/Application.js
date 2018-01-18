@@ -8,7 +8,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import './Application.css';
 import './Application.theme.css';
 
-import { PageHome, PagePools, PageWallets } from '../Pages';
+import { PageHome, PageMiningPools, PageMiningWallets } from '../Pages';
 import { PageExchangeCurrencys, PageExchangeWithdrawToWallet, PageExchangeWithdrawToExchange } from '../Pages';
 import { PageSystemInfo } from '../Pages';
 
@@ -24,8 +24,8 @@ class Application extends Component {
             </Navbar.Header>
             <Nav>
                 <NavItem eventKey={0} href='#/'>Home</NavItem>
-                <NavItem eventKey={1} href='#/wallets'>Кошельки</NavItem>
-                <NavItem eventKey={2} href='#/pools'>Пулы</NavItem>
+                <NavItem eventKey={1} href='#/miningWallets'>Кошельки</NavItem>
+                <NavItem eventKey={2} href='#/miningPools'>Пулы</NavItem>
 
                 <NavDropdown eventKey={3} title='Биржа' >
                     <MenuItem eventKey={3.1} href='#/exchangeCurrencys' >Курсы валют</MenuItem>
@@ -48,8 +48,8 @@ class Application extends Component {
         <Grid>
             <Switch>
                 <Route exact component={PageHome} path='/' />
-                <Route component={PagePools} path='/pools' />
-                <Route component={PageWallets} path='/wallets' />
+                <Route component={PageMiningPools} path='/miningPools' />
+                <Route component={PageMiningWallets} path='/miningWallets' />
                 <Route component={PageExchangeCurrencys} path='/exchangeCurrencys' />
                 <Route component={PageExchangeWithdrawToWallet} path='/exchangeWithdrawToWallet' />
                 <Route component={PageExchangeWithdrawToExchange} path='/exchangeWithdrawToExchange' />

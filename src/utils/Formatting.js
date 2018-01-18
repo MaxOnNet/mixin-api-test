@@ -1,5 +1,5 @@
 
-class Formatting extends (Object){
+class Formatting extends (Object) {
     static number_format(number, decimals, dec_point, thousands_sep) {
         number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
         let n = !isFinite(+number) ? 0 : +number,
@@ -22,14 +22,12 @@ class Formatting extends (Object){
         return s.join(dec);
     }
 
-    static wallet_format(wallet){
+    static wallet_format(wallet) {
         const len_start = 6;
         const len_end = 16;
 
-        return wallet.substring(0, len_start) + "..." + wallet.substring(wallet.length-len_end)
-
+        return wallet.substring(0, len_start) + "..." + wallet.substring(wallet.length - len_end);
     }
-
 }
 
 export default Formatting;

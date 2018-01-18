@@ -1,0 +1,227 @@
+td, tr {
+    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 11px;
+
+    height: 14px;
+    padding: 0;
+    margin: 0;
+}
+
+td.clsTableParentBody {
+    background-color: #D2D2DC;
+}
+
+td.clsHeaderType {
+    height: 80px;
+    text-align: left;
+}
+
+tr.clsHeader td {
+
+    color: #e6e6e6;
+    background-color: #999999;
+    text-align: center;
+    font-weight: bold;
+}
+
+tr.clsHeaderE td {
+    width: 20px;
+    color: #e6e6e6;
+    background-color: #999999;
+    text-align: center;
+    font-weight: bold;
+}
+
+td.clsHeaderTableSpaser {
+    background-color: #666666;
+    color: #666666;
+}
+
+td.clsHeaderTableName {
+    background-color: #666666;
+    color: #F9F9F9;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 15px;
+    text-align: left;
+
+}
+
+td.clsBodyMenuItem  {
+    width: 120px;
+    text-align: center;
+    background-color: #555555;
+    color: #e6e6e6;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+tr.clsBodyRow {
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+td.clsBodyRowId {
+    width: 30px;
+    text-align: center;
+    background-color: #666666;
+    color: #e6e6e6;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+td.clsBodyRowWaitMessadge {
+    text-align: left;
+    background-color: #a1a1a1;
+    color: #757575;
+    padding-left: 3px;
+    padding-right: 3px;
+
+}
+
+td.clsBodyRowErrorMessadge {
+    text-align: left;
+    background-color: #c7c7c7;
+    color: #750b11;
+    padding-left: 3px;
+    padding-right: 3px;
+
+}
+
+td.clsBodyRowPoolName {
+    width: 100px;
+    text-align: left;
+    background-color: #c4c4c4;
+    color: #545454;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+td.clsBodyRowPoolName a {
+    color: #181818;
+    text-decoration: none;
+}
+
+td.clsBodyRowPoolClean {
+    background-color: #595959;
+    color: #dddddd;
+}
+
+td.clsBodyRowPoolCurrency {
+    width: 50px;
+    text-align: center;
+    background-color: #595959;
+    color: #dddddd;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+td.clsBodyRowPoolFee {
+    width: 50px;
+    text-align: right;
+    background-color: #808080;
+    color: #ececec;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+td.clsBodyRowNetworkReward {
+    width: 80px;
+    text-align: right;
+    background-color: #808080;
+    color: #ececec;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+td.clsBodyRowNetworkDifficulty {
+    width: 110px;
+    text-align: right;
+    background-color: #808080;
+    color: #ececec;
+    padding-left: 3px;
+    padding-right: 5px;
+    padding-top: 2px;
+}
+
+td.clsBodyRowNetworkHashRate {
+    width: 90px;
+    text-align: right;
+    background-color: #5a5a5a;
+    color: #ececec;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+td.clsBodyRowPoolHashrate {
+    width: 90px;
+    text-align: right;
+    background-color: #5a5a5a;
+    color: #ececec;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+td.clsBodyRowPoolMiners {
+    width: 50px;
+    text-align: center;
+    background-color: #5a5a5a;
+    color: #ececec;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+td.clsBodyRowPoolCurrblockEffort {
+    width: 80px;
+    text-align: right;
+    background-color: #3b3b3b;
+    color: #dedede;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+td.clsBodyRowAWait {
+    width: 40px;
+    text-align: center;
+    background-color: #303030;
+    color: #dedede;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+}
+
+tr.clsBodyRowPoolGroup {
+    height: 24px;
+}
+
+td.clsBodyRowPoolGroupLabel {
+    text-align: left;
+    font-size: 14px;
+    background-color: #313131;
+    color: #f0f0f0;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 1px;
+    padding-right: 3px;
+}
+
+td.clsBodyRowPoolName a {
+    color: #545454;
+    text-decoration: none;
+}
+
+td.clsBodyRowPoolGroupWait {
+    text-align: center;
+    font-size: 14px;
+    background-color: #313131;
+    color: #f0f0f0;
+    padding: 10px;
+}

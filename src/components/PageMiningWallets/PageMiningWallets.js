@@ -3,7 +3,7 @@ import PageHeader from 'react-bootstrap/lib/PageHeader';
 import { FormGroup, InputGroup, FormControl, Button, ControlLabel, HelpBlock } from 'react-bootstrap';
 import AIMiningWalletContainer from './AIMiningWalletContainer';
 
-class PageWallets extends Component {
+class PageMiningWallets extends Component {
     render() {
         return (
             <div>
@@ -35,4 +35,4 @@ class PageWallets extends Component {
     }
 }
 
-export default PageWallets;
+export default PageMiningWallets;
