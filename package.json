@@ -20,7 +20,8 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "redux-router": "^2.1.2",
-    "react-redux": "^4.4.8"
+    "react-redux": "^4.4.8",
+    "i18next": "^10.3.0"
   },
   "repository": {
     "type": "git",

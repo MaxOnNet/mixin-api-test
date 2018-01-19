@@ -1,0 +1,15 @@
+{
+  "ru": {
+    "translation": {
+      "pageHome": "Домой",
+      "pageWallets": "Кошельки",
+      "pagePools": "Пулы",
+
+      "pageExchanges": "Биржи",
+      "pageExchangesCurrencys": "Курсы валют",
+
+      "pageSystem": "Система",
+      "pageSystemCurrentInformation": "Текущая информация"
+    }
+  }
+}

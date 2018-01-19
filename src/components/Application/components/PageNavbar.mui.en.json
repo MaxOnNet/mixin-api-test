@@ -1,0 +1,15 @@
+{
+  "en": {
+    "translation": {
+      "pageHome": "Home",
+      "pageWallets": "Wallets",
+      "pagePools": "Pools",
+
+      "pageExchanges": "Exchanges",
+      "pageExchangesCurrencys": "Currency's",
+
+      "pageSystem": "System",
+      "pageSystemCurrentInformation": "Current Information"
+    }
+  }
+}
