@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-class ApplicationNavbar extends Component {
+class PageNavbar extends Component {
     render() {
         return (
             <Navbar>
@@ -39,4 +39,4 @@ class ApplicationNavbar extends Component {
     }
 }
 
-export default ApplicationNavbar;
+export default PageNavbar;

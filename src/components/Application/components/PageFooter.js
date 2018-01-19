@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Alert } from 'react-bootstrap';
 
-class ApplicationFooter extends Component {
+class PageFooter extends Component {
     render() {
         return (
             <Alert bsStyle='info'>
@@ -21,4 +21,4 @@ class ApplicationFooter extends Component {
     }
 }
 
-export default ApplicationFooter;
+export default PageFooter;

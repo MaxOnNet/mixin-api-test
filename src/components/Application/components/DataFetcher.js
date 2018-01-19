@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // Redux
-import { fetchMiningPoolGroup } from '../../redux/actions/ActionsMiningPoolGroup';
-import { fetchMiningPoolData, updateMiningPoolDataAWait } from '../../redux/actions/ActionsMiningPoolData';
-import { fetchMiningPool } from '../../redux/actions/ActionsMiningPool';
+import { fetchMiningPoolGroup } from '../../../redux/actions/ActionsMiningPoolGroup';
+import { fetchMiningPoolData, updateMiningPoolDataAWait } from '../../../redux/actions/ActionsMiningPoolData';
+import { fetchMiningPool } from '../../../redux/actions/ActionsMiningPool';
 import { connect } from 'react-redux';
 
 
-class ApplicationFetcher extends Component {
+class DataFetcher extends Component {
     static propTypes = {
         dispatch: PropTypes.func.isRequired,
 
@@ -75,4 +75,4 @@ function mapStateToProps({ dispatch }) {
     };
 }
 
-export default connect(mapStateToProps)(ApplicationFetcher);
+export default connect(mapStateToProps)(DataFetcher);

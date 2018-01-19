@@ -4,11 +4,11 @@ import { Route, Switch } from 'react-router-dom';
 import { Grid } from 'react-bootstrap';
 
 // Router
-import { PageHome, PageMiningPools, PageMiningWallets } from '../Pages';
-import { PageExchangeCurrencys, PageExchangeWithdrawToWallet, PageExchangeWithdrawToExchange } from '../Pages';
-import { PageSystemInfo } from '../Pages';
+import { PageHome, PageMiningPools, PageMiningWallets } from '../../Pages';
+import { PageExchangeCurrencys, PageExchangeWithdrawToWallet, PageExchangeWithdrawToExchange } from '../../Pages';
+import { PageSystemInfo } from '../../Pages';
 
-class ApplicationSwitch extends Component {
+class PageSwitch extends Component {
     render() {
         return (
             <Grid>
@@ -26,4 +26,4 @@ class ApplicationSwitch extends Component {
     }
 }
 
-export default ApplicationSwitch;
+export default PageSwitch;

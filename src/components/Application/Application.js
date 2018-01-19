@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 
-import ApplicationNavbar from './ApplicationNavbar';
-import ApplicationSwitch from './ApplicationSwitch';
-import ApplicationFooter from './ApplicationFooter';
-import ApplicationFetcher from './ApplicationFetcher';
+import PageNavbar from './components/PageNavbar';
+import PageSwitch from './components/PageSwitch';
+import PageFooter from './components/PageFooter';
+import DataFetcher from './components/DataFetcher';
 
 //  Загрузка стилей
 import './Application.css';
@@ -13,11 +13,11 @@ class Application extends Component {
     render() {
         return (
             <Fragment>
-                <ApplicationNavbar/>
-                <ApplicationSwitch/>
+                <PageNavbar/>
+                <PageSwitch/>
                 <br/>
-                <ApplicationFetcher/>
-                <ApplicationFooter/>
+                <DataFetcher/>
+                <PageFooter/>
             </Fragment>
         );
     }
