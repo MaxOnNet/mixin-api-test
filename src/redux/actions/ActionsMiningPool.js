@@ -4,7 +4,7 @@ import fetch from 'isomorphic-fetch';
 export const REQUEST_MINING_POOL = 'REQUEST_MINING_POOL';
 export const RECEIVE_MINING_POOL = 'RECEIVE_MINING_POOL';
 
-const APIUrlGetMiningPool = 'https://api.mixin.lindon-pool.win/api/pool/get_mining_pool';
+const APIUrlGetMiningPool = 'https://api.mixin.lindon-pool.win/api/mining/get_pool';
 
 function requestMiningPool() {
     return {

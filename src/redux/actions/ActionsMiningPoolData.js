@@ -5,7 +5,7 @@ export const REQUEST_MINING_POOL_DATA = 'REQUEST_MINING_POOL_DATA';
 export const RECEIVE_MINING_POOL_DATA = 'RECEIVE_MINING_POOL_DATA';
 export const UPDATE_MINING_POOL_DATA = 'UPDATE_MINING_POOL_DATA';
 
-const APIUrlGetMiningPoolData = 'https://api.mixin.lindon-pool.win/api/pool/get_mining_pool_data';
+const APIUrlGetMiningPoolData = 'https://api.mixin.lindon-pool.win/api/mining/get_pool_data';
 
 function requestMiningPoolData() {
     return {

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import i18next from 'i18next';
 import { connect } from 'react-redux';
 
 import PageHeader from 'react-bootstrap/lib/PageHeader';
@@ -8,6 +9,7 @@ import Formatting from '../../utils/Formatting';
 
 //  Загрузка стилей
 import './PageMiningPools.css';
+
 
 class PageMiningPools extends Component {
     static propTypes = {
@@ -19,7 +21,9 @@ class PageMiningPools extends Component {
 
         miningPoolDataIsFetching: PropTypes.bool.isRequired,
         miningPoolDataItems: PropTypes.array.isRequired,
-
+        
+        MUILanguage: PropTypes.string.isRequired,
+        
         dispatch: PropTypes.func.isRequired
     };
 
@@ -31,13 +35,19 @@ class PageMiningPools extends Component {
         miningPoolItems: [],
 
         miningPoolDataIsFetching: true,
-        miningPoolDataItems: []
+        miningPoolDataItems: [],
+    
+        MUILanguage: 'ru'
     };
 
     constructor() {
         super();
     }
-
+    
+    componentWillMount() {
+        this.componentLoadLanguage();
+    }
+    
     shouldComponentUpdate() {
         const { miningPoolDataIsFetching } = this.props;
         
@@ -46,6 +56,19 @@ class PageMiningPools extends Component {
         }
         
         return true;
+    }
+    
+    componentWillUpdate() {
+        this.componentLoadLanguage();
+    }
+    
+    componentLoadLanguage() {
+        const { MUILanguage } = this.props;
+    
+        i18next.init({
+            lng: MUILanguage,
+            resources: require(`./PageMiningPools.mui.${MUILanguage}.json`)
+        });
     }
     
     findMiningPoolData(poolId) {
@@ -192,7 +215,7 @@ class PageMiningPools extends Component {
 
         return (
             <Fragment>
-                <PageHeader>Информация о криптовалютных пулах</PageHeader>
+                <PageHeader>{i18next.t('pageTitle')}</PageHeader>
                 <table className='clsTableParent' cellPadding='0' cellSpacing='1'>
                     <tbody>
                         <tr>
@@ -239,7 +262,7 @@ class PageMiningPools extends Component {
     }
 }
 
-function mapStateToProps({ miningPoolGroup, miningPool, miningPoolData }) {
+function mapStateToProps({ miningPoolGroup, miningPool, miningPoolData, MUI }) {
     const miningPoolGroupIsFetching = miningPoolGroup.isFetching;
     const miningPoolGroupItems = miningPoolGroup.items;
 
@@ -248,7 +271,9 @@ function mapStateToProps({ miningPoolGroup, miningPool, miningPoolData }) {
 
     const miningPoolDataIsFetching = miningPoolData.isFetching;
     const miningPoolDataItems = miningPoolData.items;
-
+    
+    const MUILanguage = MUI.language;
+    
     return {
         miningPoolGroupIsFetching,
         miningPoolGroupItems,
@@ -258,6 +283,8 @@ function mapStateToProps({ miningPoolGroup, miningPool, miningPoolData }) {
 
         miningPoolDataIsFetching,
         miningPoolDataItems,
+        
+        MUILanguage
     };
 }
 

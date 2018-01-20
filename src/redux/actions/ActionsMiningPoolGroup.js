@@ -4,7 +4,7 @@ import fetch from 'isomorphic-fetch';
 export const REQUEST_MINING_POOL_GROUP = 'REQUEST_MINING_POOL_GROUP';
 export const RECEIVE_MINING_POOL_GROUP = 'RECEIVE_MINING_POOL_GROUP';
 
-const APIUrlGetMiningPoolGroup = 'https://api.mixin.lindon-pool.win/api/pool/get_mining_group';
+const APIUrlGetMiningPoolGroup = 'https://api.mixin.lindon-pool.win/api/mining/get_pool_group';
 
 function requestMiningPoolGroup() {
     return {
